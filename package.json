@@ -1,9 +1,13 @@
 {
   "name": "@humanoids/kickstart",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Use Kickstart so you don't have to remember the names of your scripts!",
-  "bin": "dist/kickstart.js",
+  "bin": {
+    "kickstart": "dist/index.js"
+  },
   "scripts": {
+    "build": "tsc",
+    "start": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -33,5 +37,6 @@
   },
   "files": [
     "dist/"
-  ]
+  ],
+  "dependencies": {}
 }
