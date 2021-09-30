@@ -1,8 +1,8 @@
 {
   "name": "@humanoids/kickstart",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Use Kickstart so you don't have to remember the names of your scripts!",
-  "main": "index.js",
+  "bin": "dist/kickstart.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,5 +22,16 @@
   "bugs": {
     "url": "https://github.com/humanoidsbv/kickstart/issues"
   },
-  "homepage": "https://github.com/humanoidsbv/kickstart#readme"
+  "homepage": "https://github.com/humanoidsbv/kickstart#readme",
+  "devDependencies": {
+    "@humanoids/eslint-config": "0.0.11",
+    "@humanoids/prettier-config": "0.0.4",
+    "@types/node": "^16.10.2",
+    "eslint": "^7.32.0",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.3"
+  },
+  "files": [
+    "dist/"
+  ]
 }
