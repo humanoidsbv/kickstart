@@ -1,0 +1,26 @@
+{
+  "name": "@humanoids/kickstart",
+  "version": "0.0.1",
+  "description": "Use Kickstart so you don't have to remember the names of your scripts!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humanoidsbv/kickstart.git"
+  },
+  "keywords": [
+    "npm",
+    "package",
+    "kickstart",
+    "scripts",
+    "package.json"
+  ],
+  "author": "Humanoids",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/humanoidsbv/kickstart/issues"
+  },
+  "homepage": "https://github.com/humanoidsbv/kickstart#readme"
+}
