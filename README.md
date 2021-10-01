@@ -11,7 +11,7 @@ Use Kickstart so you don't have to remember the names of your scripts!
 
 ## Description
 
-When you're working on a project with multiple people you might've noticed that everyone is using different script names for the most common tasks. Where one might use `npm start` for starting the development mode of an application, someone else is using that command for starting the production build. Especially when you're working on more than one application you might have a hard time remembering all the right commands.
+When you're working on an application with others you might have noticed that often different script names are used for the most common tasks. Where one might use `npm start` for starting the development mode of an application, someone else is using that command for starting the production build. Especially when you're working on more than one application you might have a hard time remembering all the right commands.
 
 Luckily, there's Kickstart to the rescue! 🚀
 
