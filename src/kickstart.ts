@@ -1,6 +1,8 @@
 import readline, { Key } from "readline";
 import { ChildProcess, spawn } from "child_process";
 
+import { colors, styles } from "./styles";
+
 const package_ = require(`${process.cwd()}/package.json`);
 
 interface Script {
@@ -77,7 +79,7 @@ export class Kickstart {
       .filter(({ command }) => !command.startsWith("kickstart"));
 
     if (!scripts.length) {
-      console.error("\x1b[91mThere are no scripts in the package.json.\x1b[1m");
+      console.error(`${colors.red}There are no scripts in the package.json.${styles.reset}`);
       process.exit();
     }
 
@@ -85,16 +87,23 @@ export class Kickstart {
   }
 
   printScripts() {
+    const totalRows = process.stdout.rows;
+    const usedRows = this.scripts.length + 4;
+    const emptyRows = totalRows - usedRows;
+    const newLines = Array.from(Array(emptyRows));
+
     console.log(
       `What script would you like me to start?\n\n` +
         `${this.scripts
           .map(
             (script, i) =>
-              `\x1b[32m[${String(i + 1).padStart(
-                this.scripts.length >= 10 ? 2 : 1,
-              )}]  \x1b[1m${script.name.padEnd(15)}\x1b[0m  ${script.command}\n`,
+              `${colors.green}[${String(i + 1).padStart(this.scripts.length >= 10 ? 2 : 1)}]  ${
+                styles.bold
+              }${script.name.padEnd(15)}${styles.reset}  ${script.command}\n`,
           )
-          .join("")}`,
+          .join("")}` +
+        `${newLines.map((_) => `\n`).join("")}` +
+        `${colors.gray}Powered by Humanoids - UX & development experts from the Netherlands${styles.reset}`,
     );
   }
 }
