@@ -77,7 +77,7 @@ export class Kickstart {
       .filter(({ command }) => !command.startsWith("kickstart"));
 
     if (!scripts.length) {
-      console.error("There are no scripts in the package.json.");
+      console.error("\x1b[91mThere are no scripts in the package.json.\x1b[1m");
       process.exit();
     }
 
@@ -90,9 +90,9 @@ export class Kickstart {
         `${this.scripts
           .map(
             (script, i) =>
-              `[${String(i + 1).padStart(this.scripts.length > 10 ? 2 : 1)}]  ${script.name.padEnd(
-                15,
-              )} ${script.command}\n`,
+              `\x1b[32m[${String(i + 1).padStart(
+                this.scripts.length >= 10 ? 2 : 1,
+              )}]  \x1b[1m${script.name.padEnd(15)}\x1b[0m  ${script.command}\n`,
           )
           .join("")}`,
     );
