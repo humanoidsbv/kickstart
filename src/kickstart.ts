@@ -25,12 +25,13 @@ export class Kickstart {
     });
 
     process.stdin.on("keypress", this.handleKeypress.bind(this));
+    process.stdout.on("resize", this.render.bind(this));
 
     this.scripts = Kickstart.loadScripts();
 
     console.clear();
 
-    this.printScripts();
+    this.render();
   }
 
   static checkInteractiveTerminal() {
@@ -86,11 +87,8 @@ export class Kickstart {
     return scripts;
   }
 
-  printScripts() {
-    const totalRows = process.stdout.rows;
-    const usedRows = this.scripts.length + 4;
-    const emptyRows = totalRows - usedRows;
-    const newLines = Array.from(Array(emptyRows));
+  render() {
+    const { rows } = process.stdout;
 
     console.log(
       `What script would you like me to start?\n\n` +
@@ -102,7 +100,7 @@ export class Kickstart {
               }${script.name.padEnd(15)}${styles.reset}  ${script.command}\n`,
           )
           .join("")}` +
-        `${newLines.map((_) => `\n`).join("")}` +
+        `${"\n".repeat(rows - this.scripts.length - 4)}` +
         `${colors.gray}Powered by Humanoids - UX & development experts from the Netherlands${styles.reset}`,
     );
   }
