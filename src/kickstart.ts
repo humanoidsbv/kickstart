@@ -1,7 +1,7 @@
 import readline, { Key } from "readline";
 import { ChildProcess, spawn } from "child_process";
 
-import { colors, styles } from "./styles";
+import { color, style } from "./styling";
 
 const package_ = require(`${process.cwd()}/package.json`);
 
@@ -89,10 +89,10 @@ export class Kickstart {
       .filter(({ command }) => !command.startsWith("kickstart"));
 
     if (!scripts.length) {
-      console.error(`${colors.red}There are no scripts in the package.json.${styles.reset}`);
+      console.error(`${color.red}There are no scripts in the package.json.${style.reset}`);
       process.exit(1);
     } else if (scripts.length > 26) {
-      console.error(`${colors.red}There are too many scripts in the package.json.${styles.reset}`);
+      console.error(`${color.red}There are too many scripts in the package.json.${style.reset}`);
       process.exit(1);
     }
 
@@ -107,13 +107,13 @@ export class Kickstart {
         `${this.scripts
           .map(
             (script, i) =>
-              `${colors.green}[${
+              `${color.green}[${
                 this.scripts.length > 8 ? String.fromCharCode(1 + i + 64) : i + 1
-              }]  ${styles.bold}${script.name.padEnd(15)}${styles.reset}  ${script.command}\n`,
+              }]  ${style.bold}${script.name.padEnd(15)}${style.reset}  ${script.command}\n`,
           )
           .join("")}` +
         `${"\n".repeat(rows - this.scripts.length - 4)}` +
-        `${colors.gray}Powered by Humanoids - UX & development experts from the Netherlands${styles.reset}`,
+        `${color.gray}Powered by Humanoids - UX & development experts from the Netherlands${style.reset}`,
     );
   }
 }
