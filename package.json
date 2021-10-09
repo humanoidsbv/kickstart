@@ -1,6 +1,6 @@
 {
   "name": "@humanoids/kickstart",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Use Kickstart so you don't have to remember the names of your scripts!",
   "bin": {
     "kickstart": "dist/index.js"
@@ -28,8 +28,8 @@
   },
   "homepage": "https://github.com/humanoidsbv/kickstart#readme",
   "devDependencies": {
-    "@humanoids/eslint-config": "0.0.11",
-    "@humanoids/prettier-config": "0.0.4",
+    "@humanoids/eslint-config": "^0.0.11",
+    "@humanoids/prettier-config": "^0.0.4",
     "@types/node": "^16.10.2",
     "eslint": "^7.32.0",
     "prettier": "^2.4.1",
@@ -37,6 +37,5 @@
   },
   "files": [
     "dist/"
-  ],
-  "dependencies": {}
+  ]
 }
