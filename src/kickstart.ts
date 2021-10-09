@@ -39,7 +39,7 @@ export class Kickstart {
       process.stdin.setRawMode(true);
     } else {
       console.error("Kickstart requires an interactive terminal!");
-      process.exit();
+      process.exit(1);
     }
   }
 
@@ -51,13 +51,22 @@ export class Kickstart {
       process.exit();
     }
 
-    if (/\D/.test(input) || Number(input) > this.scripts.length || Number(input) < 1) {
+    if (
+      this.scripts.length < 10 &&
+      (/\D/.test(input) || Number(input) > this.scripts.length || Number(input) < 1)
+    ) {
+      return;
+    }
+    if (this.scripts.length >= 10 && !/[A-Z]/i.test(input)) {
       return;
     }
 
-    console.log(`OK! I'll start "${this.scripts[Number(input) - 1].name}" for you!`);
+    const index =
+      this.scripts.length >= 10 ? input.toLowerCase().charCodeAt(0) - 96 : Number(input) - 1;
 
-    this.script = spawn(this.scripts[Number(input) - 1].command, [], {
+    console.log(`OK! I'll start "${this.scripts[index].name}" for you!`);
+
+    this.script = spawn(this.scripts[index].command, [], {
       cwd: process.cwd(),
       detached: true,
       shell: true,
@@ -81,7 +90,10 @@ export class Kickstart {
 
     if (!scripts.length) {
       console.error(`${colors.red}There are no scripts in the package.json.${styles.reset}`);
-      process.exit();
+      process.exit(1);
+    } else if (scripts.length > 26) {
+      console.error(`${colors.red}There are too many scripts in the package.json.${styles.reset}`);
+      process.exit(1);
     }
 
     return scripts;
@@ -95,9 +107,9 @@ export class Kickstart {
         `${this.scripts
           .map(
             (script, i) =>
-              `${colors.green}[${String(i + 1).padStart(this.scripts.length >= 10 ? 2 : 1)}]  ${
-                styles.bold
-              }${script.name.padEnd(15)}${styles.reset}  ${script.command}\n`,
+              `${colors.green}[${
+                this.scripts.length > 8 ? String.fromCharCode(1 + i + 64) : i + 1
+              }]  ${styles.bold}${script.name.padEnd(15)}${styles.reset}  ${script.command}\n`,
           )
           .join("")}` +
         `${"\n".repeat(rows - this.scripts.length - 4)}` +
