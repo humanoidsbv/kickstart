@@ -28,7 +28,7 @@ Kickstart can be installed in two simple steps:
    - with NPM: `npm install --save-dev @humanoids/kickstart`,
    - or With Yarn: `yarn add --dev @humanoids/kickstart`.
 2. Open your `package.json` and configure the start script:
-   ```json
+   ```jsonc
    // ...
    "scripts": {
      "start": "kickstart",
