@@ -66,7 +66,7 @@ export class Kickstart {
 
     console.log(`OK! I'll start "${this.scripts[index].name}" for you!`);
 
-    this.script = spawn(this.scripts[index].command, [], {
+    this.script = spawn(`npm run ${this.scripts[index].name}`, [], {
       cwd: process.cwd(),
       detached: true,
       shell: true,
