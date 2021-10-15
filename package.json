@@ -1,6 +1,6 @@
 {
   "name": "@humanoids/kickstart",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Use Kickstart so you don't have to remember the names of your scripts!",
   "bin": {
     "kickstart": "dist/index.js"

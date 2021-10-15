@@ -2,12 +2,15 @@
 
 Use Kickstart so you don't have to remember the names of your scripts!
 
+![](kickstart.gif)
+
 # Contents
 
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
+- [Credits](#credits)
 
 ## Description
 
@@ -26,12 +29,12 @@ Kickstart can be installed in two simple steps:
    - or With Yarn: `yarn add --dev @humanoids/kickstart`.
 2. Open your `package.json` and configure the start script:
    ```json
-   ...
+   // ...
    "scripts": {
      "start": "kickstart",
-     ...
+     // ...
    },
-   ...
+   // ...
    ```
 
 ## Usage

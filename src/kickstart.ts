@@ -62,7 +62,7 @@ export class Kickstart {
     }
 
     const index =
-      this.scripts.length >= 10 ? input.toLowerCase().charCodeAt(0) - 96 : Number(input) - 1;
+      this.scripts.length >= 10 ? input.toLowerCase().charCodeAt(0) - 97 : Number(input) - 1;
 
     console.log(`OK! I'll start "${this.scripts[index].name}" for you!`);
 
