@@ -51,10 +51,7 @@ export class Kickstart {
       process.exit();
     }
 
-    if (
-      this.scripts.length < 10 &&
-      (/\D/.test(input) || Number(input) > this.scripts.length || Number(input) < 1)
-    ) {
+    if (this.scripts.length < 10 && (/\D/.test(input) || Number(input) < 1)) {
       return;
     }
     if (this.scripts.length >= 10 && !/[A-Z]/i.test(input)) {
@@ -63,6 +60,10 @@ export class Kickstart {
 
     const index =
       this.scripts.length >= 10 ? input.toLowerCase().charCodeAt(0) - 97 : Number(input) - 1;
+
+    if (index >= this.scripts.length) {
+      return;
+    }
 
     console.log(`OK! I'll start "${this.scripts[index].name}" for you!`);
 
@@ -101,6 +102,7 @@ export class Kickstart {
 
   render() {
     const { rows } = process.stdout;
+    const padding = rows - this.scripts.length - 4;
 
     console.log(
       `What script would you like me to start?\n\n` +
@@ -112,7 +114,7 @@ export class Kickstart {
               }]  ${style.bold}${script.name.padEnd(15)}${style.reset}  ${script.command}\n`,
           )
           .join("")}` +
-        `${"\n".repeat(rows - this.scripts.length - 4)}` +
+        `${padding > 0 ? "\n".repeat(padding) : ""}` +
         `${color.gray}Powered by Humanoids - UX & development experts from the Netherlands${style.reset}`,
     );
   }
